@@ -31,8 +31,8 @@ production:
     pool: 5
     database: mysite_ueg5
     username: mysite_ueg5_user
-    password: <%= ENV['HT1Er9GuvIvtFtBNpJeDBMcYXlHpDlhj'] %>
-    url: <%= ENV['postgresql://mysite_ueg5_user:HT1Er9GuvIvtFtBNpJeDBMcYXlHpDlhj@dpg-d3edbu9r0fns73bb6n00-a/mysite_ueg5'] %>
+    password: password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
   cache:
     <<: *primary_production
   queue:
