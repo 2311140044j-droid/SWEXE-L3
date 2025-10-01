@@ -1,0 +1,38 @@
+<h1>ブックマーク一覧</h1>
+
+<% if flash[:notice] %>
+  <div style="padding: 10px; margin: 10px 0; background-color: #d4edda; color: #155724; border-radius: 5px;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div style="padding: 10px; margin: 10px 0; background-color: #f8d7da; color: #721c24; border-radius: 5px;">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<%= link_to '新規追加', new_bookmark_path, class: "btn btn-primary mb-3" %>
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>URL</th>
+      <th>日付</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookmarks.each do |bookmark| %>
+      <tr>
+        <td><%= link_to bookmark.title, bookmark %></td>
+        <td><%= link_to bookmark.url, bookmark.url, target: "_blank" %></td>
+        <td><%= bookmark.date %></td>
+        <td>
+          <%= link_to '編集', edit_bookmark_path(bookmark) %> |
+          <%= link_to '削除', bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

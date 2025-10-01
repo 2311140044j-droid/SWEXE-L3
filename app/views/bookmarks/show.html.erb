@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+  <div style="padding: 10px; margin: 10px 0; background-color: #d4edda; color: #155724; border-radius: 5px;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div style="padding: 10px; margin: 10px 0; background-color: #f8d7da; color: #721c24; border-radius: 5px;">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+
+<h1><%= @bookmark.title %></h1>
+
+<p><strong>URL:</strong> <%= link_to @bookmark.url, @bookmark.url, target: "_blank" %></p>
+<p><strong>日付:</strong> <%= @bookmark.date %></p>
+
+<%= link_to "編集", edit_bookmark_path(@bookmark), class: "btn btn-warning" %>
+<%= link_to "削除", @bookmark, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+<%= link_to "一覧へ戻る", bookmarks_path, class: "btn btn-secondary" %>
